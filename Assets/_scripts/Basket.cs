@@ -4,11 +4,6 @@ using UnityEngine;
 
 public class Basket : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
         Vector3 mousePos2D = Input.mousePosition;
@@ -19,4 +14,13 @@ public class Basket : MonoBehaviour {
         pos.x = mousePos3D.x;
         this.transform.position = pos;
 	}
+
+    void OnCollisionEnter(Collision collision)
+    {
+        GameObject collidedWith = collision.gameObject;
+        if(collidedWith.tag == "Apple") {
+            Destroy(collidedWith);
+        }
+    }
+
 }
